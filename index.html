@@ -1,13 +1,9 @@
-
-
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MU3EEN معين - استأجر الآن وادفع لاحقاً</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>معين - استأجر الآن، ادفع لاحقاً</title>
     <style>
         * {
             margin: 0;
@@ -15,1139 +11,1041 @@
             box-sizing: border-box;
         }
 
-
-    :root {
-        --primary: #6366f1;
-        --primary-dark: #4f46e5;
-        --secondary: #f59e0b;
-        --accent: #10b981;
-        --dark: #1f2937;
-        --light: #f8fafc;
-        --text: #374151;
-        --text-light: #6b7280;
-    }
-
-    body {
-        font-family: 'Cairo', Arial, sans-serif;
-        line-height: 1.6;
-        color: var(--text);
-        overflow-x: hidden;
-        direction: rtl;
-    }
-
-    /* Animated Background */
-    .hero {
-        min-height: 100vh;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #8b5cf6 100%);
-        position: relative;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        animation: float 20s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-20px) rotate(1deg); }
-    }
-
-    .floating-shapes {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .shape {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        animation: floating 6s ease-in-out infinite;
-    }
-
-    .shape:nth-child(1) {
-        width: 80px;
-        height: 80px;
-        top: 20%;
-        right: 10%;
-        animation-delay: 0s;
-    }
-
-    .shape:nth-child(2) {
-        width: 120px;
-        height: 120px;
-        top: 60%;
-        left: 15%;
-        animation-delay: 2s;
-    }
-
-    .shape:nth-child(3) {
-        width: 60px;
-        height: 60px;
-        bottom: 20%;
-        right: 20%;
-        animation-delay: 4s;
-    }
-
-    @keyframes floating {
-        0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-30px) scale(1.1); }
-    }
-
-    /* Navigation */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 1rem 2rem;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        transition: all 0.3s ease;
-    }
-
-    nav.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--primary);
-        text-decoration: none;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-    }
-
-    .nav-links a {
-        text-decoration: none;
-        color: var(--text);
-        font-weight: 500;
-        transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-        color: var(--primary);
-    }
-
-    .cta-button {
-        background: var(--primary);
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
-
-    .cta-button:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
-    }
-
-    /* Hero Section */
-    .hero-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-        position: relative;
-        z-index: 2;
-    }
-
-    .hero-text h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: white;
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-    }
-
-    .hero-text p {
-        font-size: 1.25rem;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .primary-btn {
-        background: white;
-        color: var(--primary);
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .primary-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-    }
-
-    .secondary-btn {
-        background: transparent;
-        color: white;
-        padding: 1rem 2rem;
-        border: 2px solid white;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .secondary-btn:hover {
-        background: white;
-        color: var(--primary);
-    }
-
-    .hero-visual {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .phone-mockup {
-        width: 300px;
-        height: 600px;
-        background: linear-gradient(145deg, #ffffff, #f0f0f0);
-        border-radius: 30px;
-        padding: 20px;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-        position: relative;
-        animation: phone-float 3s ease-in-out infinite;
-    }
-
-    @keyframes phone-float {
-        0%, 100% { transform: translateY(0px) rotateY(0deg); }
-        50% { transform: translateY(-15px) rotateY(-5deg); }
-    }
-
-    .phone-screen {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-        padding: 2rem;
-    }
-
-    /* Features Section */
-    .features {
-        padding: 5rem 2rem;
-        background: var(--light);
-    }
-
-    .features-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-    }
-
-    .section-header h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 1rem;
-    }
-
-    .section-header p {
-        font-size: 1.2rem;
-        color: var(--text-light);
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .feature-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .feature-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(-90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
-        transition: right 0.5s;
-    }
-
-    .feature-card:hover::before {
-        right: 100%;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .feature-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1.5rem;
-        font-size: 2rem;
-    }
-
-    .feature-card h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--dark);
-        margin-bottom: 1rem;
-    }
-
-    .feature-card p {
-        color: var(--text-light);
-        line-height: 1.6;
-    }
-
-    /* How It Works */
-    .how-it-works {
-        padding: 5rem 2rem;
-        background: white;
-    }
-
-    .steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-
-    .step {
-        text-align: center;
-        position: relative;
-    }
-
-    .step-number {
-        width: 60px;
-        height: 60px;
-        background: var(--primary);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0 auto 1.5rem;
-    }
-
-    .step h3 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--dark) 0%, #374151 100%);
-        padding: 5rem 2rem;
-        text-align: center;
-        color: white;
-    }
-
-    .cta-content h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-
-    .cta-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
-
-    /* Footer */
-    footer {
-        background: var(--dark);
-        color: white;
-        padding: 3rem 2rem 1rem;
-        text-align: center;
-    }
-
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .footer-links a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-        color: white;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-        .hero-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 2rem;
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #0a3d62; /* لون نص أزرق داكن لتحسين الوضوح */
+            background: linear-gradient(135deg, #0a3d62 0%, #38ada9 50%, #78e08f 100%); /* تدرج أخضر-أزرق */
+            direction: rtl;
+            overflow-x: hidden;
         }
 
-        .hero-text h1 {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
             font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #0a3d62, #38ada9, #78e08f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            position: relative;
         }
 
-        .nav-links {
-            display: none;
+        .logo::before {
+            content: '✨';
+            position: absolute;
+            right: -35px;
+            top: -5px;
+            font-size: 1.5rem;
+            animation: sparkle 2s infinite;
         }
 
-        .phone-mockup {
-            width: 250px;
-            height: 500px;
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
         }
 
-        .hero-buttons {
-            justify-content: center;
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0a3d62; /* أزرق داكن */
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            background: rgba(10, 61, 98, 0.1); /* أزرق داكن شفاف */
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #0a3d62, #38ada9);
+            transition: all 0.3s ease;
+            transform: translateX(50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0a3d62 0%, #38ada9 30%, #78e08f 70%, #b8e994 100%); /* تدرج أخضر-أزرق */
+            color: white;
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(120, 224, 143, 0.1) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #78e08f, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(120, 224, 143, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            line-height: 1.8;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #0a3d62, #38ada9, #78e08f);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #0a3d62, #38ada9, #78e08f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .features-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(10, 61, 98, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(56, 173, 169, 0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translate(20px, 20px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            color: #0a3d62;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #0a3d62; /* أزرق داكن */
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .search-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a3d62 0%, #38ada9 50%, #78e08f 100%); /* تدرج أخضر-أزرق */
+            color: white;
+            position: relative;
+        }
+
+        .search-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(120, 224, 143, 0.1) 0%, transparent 50%);
+        }
+
+        .search-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 4rem;
+            color: #0a3d62;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #0a3d62, #38ada9, #78e08f);
+            border-radius: 32px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .search-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #0a3d62, #38ada9, #78e08f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            color: #0a3d62; /* أزرق داكن */
+            font-size: 1.1rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 3px solid transparent;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(45deg, #0a3d62, #38ada9) border-box;
+            font-family: 'Tajawal', sans-serif;
+            color: #0a3d62;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(10, 61, 98, 0.2);
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(45deg, #0a3d62, #38ada9) border-box;
+        }
+
+        .form-group .icon {
+            position: absolute;
+            right: 20px;
+            top: 48px;
+            font-size: 1.5rem;
+            z-index: 2;
+            color: #0a3d62;
+        }
+
+        .ai-search-btn {
+            grid-column: 1 / -1;
+            background: linear-gradient(45deg, #0a3d62, #38ada9, #78e08f);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .ai-search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        .ai-search-btn:hover::before {
+            left: 100%;
+        }
+
+        .ai-search-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .ai-search-btn::after {
+            content: '🤖';
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+
+        .locations {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a3d62 0%, #38ada9 50%, #78e08f 100%); /* تدرج أخضر-أزرق */
+            color: white;
+        }
+
+        .locations h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #map {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(45deg, #0a3d62, #38ada9) border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .location-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            color: #0a3d62; /* أزرق داكن */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 173, 169, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .location-item:hover::before {
+            left: 100%;
+        }
+
+        .location-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-item h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0a3d62;
+        }
+
+        .location-item p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .ai-results {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+            border: 1px solid rgba(10, 61, 98, 0.1);
+        }
+
+        .ai-results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #38ada9;
+        }
+
+        .result-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0a3d62;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-details {
+            color: #4a5568;
+            font-size: 0.9rem;
         }
 
         .steps {
-            grid-template-columns: 1fr;
+            padding: 80px 0;
+            background: white;
         }
-    }
 
-    /* Property Search Section */
-    .property-search {
-        padding: 5rem 2rem;
-        background: white;
-    }
-
-    .search-container {
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .search-filters {
-        background: var(--light);
-        padding: 2rem;
-        border-radius: 15px;
-        margin-bottom: 2rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        align-items: end;
-    }
-
-    .filter-group {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .filter-group label {
-        font-weight: 600;
-        color: var(--dark);
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
-    }
-
-    .filter-group input,
-    .filter-group select {
-        padding: 0.75rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 10px;
-        font-size: 1rem;
-        font-family: 'Cairo', Arial, sans-serif;
-        transition: border-color 0.3s ease;
-        background: white;
-    }
-
-    .filter-group input:focus,
-    .filter-group select:focus {
-        outline: none;
-        border-color: var(--primary);
-    }
-
-    .search-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 10px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: 'Cairo', Arial, sans-serif;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .search-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-    }
-
-    .search-results {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        min-height: 600px;
-    }
-
-    .map-container {
-        background: #f0f0f0;
-        border-radius: 15px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    #map {
-        width: 100%;
-        height: 600px;
-        border-radius: 15px;
-    }
-
-    .properties-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        max-height: 600px;
-        overflow-y: auto;
-        padding-left: 1rem;
-    }
-
-    .property-card {
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
-
-    .property-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .property-image {
-        height: 150px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.2rem;
-    }
-
-    .property-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: var(--accent);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-
-    .property-price {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 10px;
-        font-weight: 700;
-        font-size: 1.1rem;
-    }
-
-    .property-details {
-        padding: 1.5rem;
-    }
-
-    .property-details h3 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--dark);
-        margin-bottom: 0.5rem;
-    }
-
-    .property-location {
-        color: var(--text-light);
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-    }
-
-    .property-features {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .property-features span {
-        font-size: 0.85rem;
-        color: var(--text-light);
-        background: var(--light);
-        padding: 0.25rem 0.5rem;
-        border-radius: 8px;
-    }
-
-    .property-amenities {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .amenity {
-        background: rgba(99, 102, 241, 0.1);
-        color: var(--primary);
-        padding: 0.25rem 0.75rem;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-
-    .rent-now-btn {
-        width: 100%;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.75rem;
-        border-radius: 10px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: 'Cairo', Arial, sans-serif;
-    }
-
-    .rent-now-btn:hover {
-        background: var(--primary-dark);
-    }
-
-    /* Arabic number styling */
-    .arabic-number {
-        font-family: 'Cairo', Arial, sans-serif;
-    }
-
-    /* Mobile Responsive for Property Search */
-    @media (max-width: 768px) {
-        .search-results {
-            grid-template-columns: 1fr;
+        .steps h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0a3d62;
         }
-        
-        .properties-list {
-            max-height: none;
-            padding-left: 0;
-        }
-        
-        #map {
-            height: 300px;
-        }
-        
-        .search-filters {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
 
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
 
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0a3d62 0%, #38ada9 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #0a3d62;
+        }
+
+        .step-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #0a3d62;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">RNPL</a>
-            <ul class="nav-links">
-                <li><a href="#features">الميزات</a></li>
-                <li><a href="#property-search">البحث عن عقار</a></li>
-                <li><a href="#how-it-works">كيف يعمل</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-            <a href="#signup" class="cta-button">ابدأ الآن</a>
-        </div>
-    </nav>
-
-
-<!-- Hero Section -->
-<section class="hero">
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1>استأجر الآن، ادفع لاحقاً</h1>
-            <p>قسم إيجارك إلى دفعات مرنة. بدون فحص ائتماني، بدون رسوم خفية. احصل على الموافقة فوراً وانتقل إلى منزل أحلامك اليوم.</p>
-            <div class="hero-buttons">
-                <a href="#signup" class="primary-btn">ابدأ الطلب</a>
-                <a href="#how-it-works" class="secondary-btn">اعرف أكثر</a>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">معين</a>
+                <nav>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#search">البحث الذكي</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#locations">الخريطة</a></li>
+                        <li><a href="#steps">كيف يعمل</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="phone-mockup">
-                <div class="phone-screen">
-                    <h3>تطبيق RNPL</h3>
-                    <p>إدارة مدفوعات الإيجار بسهولة</p>
-                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                        <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">الدفعة القادمة</div>
-                        <div style="font-size: 1.5rem; font-weight: bold;" class="arabic-number">٤٢٥ ﷼</div>
-                        <div style="font-size: 0.8rem; opacity: 0.8;">مستحقة خلال ١٥ يوم</div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>استأجر الآن، ادفع لاحقاً</h1>
+                <p>قسم إيجارك إلى دفعات مرنة. بدون فحص ائتماني، بدون رسوم خفية. احصل على الموافقة فوراً وانتقل إلى منزل أحلامك اليوم.</p>
+                <a href="#steps" class="cta-button">ابدأ الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section" id="search">
+        <div class="container">
+            <div class="search-container">
+                <h2 class="search-title">🤖 بحث ذكي عن السكن المثالي</h2>
+                <form class="search-form" id="aiSearchForm">
+                    <div class="form-group">
+                        <label for="housing-type">🏠 نوع السكن</label>
+                        <select id="housing-type" name="housing-type">
+                            <option value="">اختر نوع السكن</option>
+                            <option value="apartment">شقة</option>
+                            <option value="villa">فيلا</option>
+                            <option value="duplex">دوبلكس</option>
+                            <option value="studio">استوديو</option>
+                        </select>
+                        <span class="icon">🏠</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Features Section -->
-<section class="features" id="features">
-    <div class="features-container">
-        <div class="section-header">
-            <h2>لماذا تختار RNPL؟</h2>
-            <p>نجعل الاستئجار أسهل وأكثر مرونة بحلول دفع مبتكرة مصممة للمستأجرين العصريين.</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>موافقة فورية</h3>
-                <p>احصل على الموافقة في دقائق، وليس أيام. خوارزميتنا المتقدمة تقدم قرارات فورية دون التأثير على درجتك الائتمانية.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💳</div>
-                <h3>دفعات مرنة</h3>
-                <p>قسم إيجارك إلى دفعات أسبوعية أو نصف شهرية أو شهرية تتناسب مع جدولك الزمني وتدفقك النقدي.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏠</div>
-                <h3>أي عقار</h3>
-                <p>استخدم RNPL مع أي عقار للإيجار. نعمل مع الملاك ومديري العقارات في جميع أنحاء البلاد.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>آمن ومضمون</h3>
-                <p>أمان بمستوى البنوك يحمي معلوماتك الشخصية والمالية. بياناتك دائماً مشفرة وآمنة.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>تطبيق محمول</h3>
-                <p>إدارة مدفوعاتك، تتبع تاريخ الإيجار، واحصل على الإشعارات كلها من تطبيقنا سهل الاستخدام.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>بناء الائتمان</h3>
-                <p>الدفعات في الوقت المحدد تساعد في بناء تاريخك الائتماني، مما يسهل التأهل للإيجارات والقروض المستقبلية.</p>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="form-group">
+                        <label for="family-members">👨‍👩‍👧‍👦 عدد أفراد الأسرة</label>
+                        <input type="number" id="family-members" name="family-members" placeholder="مثال: 4" min="1" max="20">
+                        <span class="icon">👨‍👩‍👧‍👦</span>
+                    </div>
 
-<!-- Property Search Section -->
-<section class="property-search" id="property-search">
-    <div class="features-container">
-        <div class="section-header">
-            <h2>ابحث عن العقار المناسب</h2>
-            <p>استخدم أداة البحث المتقدمة لدينا للعثور على العقار المثالي في المنطقة التي تريدها</p>
-        </div>
-        
-        <div class="search-container">
-            <div class="search-filters">
-                <div class="filter-group">
-                    <label for="location">المنطقة</label>
-                    <input type="text" id="location" placeholder="ابحث عن منطقة أو حي">
+                    <div class="form-group">
+                        <label for="children-count">🧒 عدد الأطفال</label>
+                        <input type="number" id="children-count" name="children-count" placeholder="مثال: 2" min="0" max="10">
+                        <span class="icon">🧒</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="work-location">🏢 مكان العمل</label>
+                        <input type="text" id="work-location" name="work-location" placeholder="مثال: شارع الأمير محمد بن عبدالعزيز">
+                        <span class="icon">🏢</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">💰 الميزانية الشهرية (ريال)</label>
+                        <input type="number" id="budget" name="budget" placeholder="مثال: 3000" min="500" max="50000">
+                        <span class="icon">💰</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferred-area">📍 المنطقة المفضلة</label>
+                        <select id="preferred-area" name="preferred-area">
+                            <option value="">اختر المنطقة</option>
+                            <option value="malaz">حي الملز</option>
+                            <option value="narjis">حي النرجس</option>
+                            <option value="olaya">حي العليا</option>
+                            <option value="diplomatic">الحي الدبلوماسي</option>
+                            <option value="sahafa">حي الصحافة</option>
+                            <option value="wurud">حي الورود</option>
+                        </select>
+                        <span class="icon">📍</span>
+                    </div>
+
+                    <button type="submit" class="ai-search-btn">ابحث بالذكاء الاصطناعي</button>
+                </form>
+
+                <div id="aiResults" class="ai-results">
+                    <h3>🎯 النتائج المقترحة لك</h3>
+                    <div id="resultsContainer"></div>
                 </div>
-                <div class="filter-group">
-                    <label for="property-type">نوع العقار</label>
-                    <select id="property-type">
-                        <option value="">جميع الأنواع</option>
-                        <option value="apartment">شقة</option>
-                        <option value="villa">فيلا</option>
-                        <option value="studio">استوديو</option>
-                        <option value="duplex">دوبلكس</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="bedrooms">عدد الغرف</label>
-                    <select id="bedrooms">
-                        <option value="">أي عدد</option>
-                        <option value="1">١ غرفة</option>
-                        <option value="2">٢ غرفة</option>
-                        <option value="3">٣ غرف</option>
-                        <option value="4">٤ غرف+</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="price-range">المدى السعري (شهرياً)</label>
-                    <select id="price-range">
-                        <option value="">أي سعر</option>
-                        <option value="0-2000">أقل من ٢٠٠٠ ﷼</option>
-                        <option value="2000-4000">٢٠٠٠ - ٤٠٠٠ ﷼</option>
-                        <option value="4000-6000">٤٠٠٠ - ٦٠٠٠ ﷼</option>
-                        <option value="6000+">أكثر من ٦٠٠٠ ﷼</option>
-                    </select>
-                </div>
-                <button class="search-btn" onclick="searchProperties()">
-                    <span>🔍</span>
-                    ابحث الآن
-                </button>
             </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>إدارة مدفوعات الإيجار بسهولة</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #0a3d62; max-width: 600px; margin: 0 auto 3rem auto;">
+                نجعل الاستئجار أسهل وأكثر مرونة بحلول دفع مبتكرة مصممة للمستأجرين العصريين.
+            </p>
             
-            <div class="search-results">
-                <div class="map-container">
-                    <div id="map"></div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>موافقة فورية</h3>
+                    <p>احصل على الموافقة في دقائق، وليس أيام. خوارزميتنا المتقدمة تقدم قرارات فورية دون التأثير على درجتك الائتمانية.</p>
                 </div>
                 
-                <div class="properties-list">
-                    <div class="property-card" data-lat="24.7136" data-lng="46.6753">
-                        <div class="property-image">
-                            <div class="property-badge">متاح للإيجار</div>
-                            <div class="property-price">٣٥٠٠ ﷼/شهر</div>
-                        </div>
-                        <div class="property-details">
-                            <h3>شقة حديثة في الرياض</h3>
-                            <p class="property-location">📍 حي الملز، الرياض</p>
-                            <div class="property-features">
-                                <span>🛏 ٢ غرفة</span>
-                                <span>🚿 ٢ حمام</span>
-                                <span>📐 ١٢٠ م²</span>
-                            </div>
-                            <div class="property-amenities">
-                                <span class="amenity">مكيف</span>
-                                <span class="amenity">مواقف</span>
-                                <span class="amenity">مصعد</span>
-                            </div>
-                            <button class="rent-now-btn" onclick="rentProperty(this)">استأجر بـ RNPL</button>
-                        </div>
-                    </div>
-                    
-                    <div class="property-card" data-lat="24.6877" data-lng="46.7219">
-                        <div class="property-image">
-                            <div class="property-badge">متاح للإيجار</div>
-                            <div class="property-price">٤٢٠٠ ﷼/شهر</div>
-                        </div>
-                        <div class="property-details">
-                            <h3>فيلا عائلية مع حديقة</h3>
-                            <p class="property-location">📍 حي النرجس، الرياض</p>
-                            <div class="property-features">
-                                <span>🛏 ٤ غرف</span>
-                                <span>🚿 ٣ حمام</span>
-                                <span>📐 ٢٥٠ م²</span>
-                            </div>
-                            <div class="property-amenities">
-                                <span class="amenity">حديقة</span>
-                                <span class="amenity">مجلس</span>
-                                <span class="amenity">غرفة خادمة</span>
-                            </div>
-                            <button class="rent-now-btn" onclick="rentProperty(this)">استأجر بـ RNPL</button>
-                        </div>
-                    </div>
-                    
-                    <div class="property-card" data-lat="24.7744" data-lng="46.7388">
-                        <div class="property-image">
-                            <div class="property-badge">متاح للإيجار</div>
-                            <div class="property-price">٢٨٠٠ ﷼/شهر</div>
-                        </div>
-                        <div class="property-details">
-                            <h3>استوديو في برج سكني</h3>
-                            <p class="property-location">📍 حي العليا، الرياض</p>
-                            <div class="property-features">
-                                <span>🛏 ١ غرفة</span>
-                                <span>🚿 ١ حمام</span>
-                                <span>📐 ٧٥ م²</span>
-                            </div>
-                            <div class="property-amenities">
-                                <span class="amenity">مفروش</span>
-                                <span class="amenity">جيم</span>
-                                <span class="amenity">مسبح</span>
-                            </div>
-                            <button class="rent-now-btn" onclick="rentProperty(this)">استأجر بـ RNPL</button>
-                        </div>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>دفعات مرنة</h3>
+                    <p>قسم إيجارك إلى دفعات أسبوعية أو نصف شهرية أو شهرية تتناسب مع جدولك الزمني وتدفقك النقدي.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>أي عقار</h3>
+                    <p>استخدم معين مع أي عقار للإيجار. نعمل مع الملاك ومديري العقارات في جميع أنحاء البلاد.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>أمان تام</h3>
+                    <p>أمان بمستوى البنوك يحمي معلوماتك الشخصية والمالية. بياناتك دائماً مشفرة وآمنة.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>إدارة سهلة</h3>
+                    <p>إدارة مدفوعاتك، تتبع تاريخ الإيجار، واحصل على الإشعارات كلها من تطبيقنا سهل الاستخدام.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>بناء الائتمان</h3>
+                    <p>الدفعات في الوقت المحدد تساعد في بناء تاريخك الائتماني، مما يسهل التأهل للإيجارات والقروض المستقبلية.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- How It Works -->
-<section class="how-it-works" id="how-it-works">
-    <div class="features-container">
-        <div class="section-header">
-            <h2>كيف يعمل</h2>
-            <p>ابدأ مع RNPL في ثلاث خطوات بسيطة وانتقل إلى منزلك الجديد اليوم.</p>
-        </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number arabic-number">١</div>
-                <h3>قدم طلبك عبر الإنترنت</h3>
-                <p>أكمل طلبنا السريع في ٣ دقائق. بدون أوراق، بدون فحص ائتماني، فقط أسئلة بسيطة حول دخلك واحتياجاتك الإيجارية.</p>
-            </div>
-            <div class="step">
-                <div class="step-number arabic-number">٢</div>
-                <h3>احصل على الموافقة</h3>
-                <p>تلق الموافقة الفورية وجدول الدفع الخاص بك. سنعمل معك لإنشاء خطة تناسب ميزانيتك تماماً.</p>
-            </div>
-            <div class="step">
-                <div class="step-number arabic-number">٣</div>
-                <h3>انتقل إلى منزلك</h3>
-                <p>ندفع لمالك العقار، وتدفع لنا بأقساط مرنة. انتقل إلى منزل أحلامك دون الضغط المالي.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="cta-section" id="signup">
-    <div class="cta-content">
-        <h2>جاهز للبدء؟</h2>
-        <p>انضم إلى آلاف المستأجرين الذين حققوا أحلامهم السكنية مع RNPL</p>
-        <a href="#" class="primary-btn" onclick="showSignupForm()">قدم الآن - مجاناً</a>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-links">
-            <a href="#about">من نحن</a>
-            <a href="#privacy">سياسة الخصوصية</a>
-            <a href="#terms">شروط الخدمة</a>
-            <a href="#contact">اتصل بنا</a>
-            <a href="#help">مركز المساعدة</a>
-        </div>
-        <p>&copy; ٢٠٢٥ RNPL. جميع الحقوق محفوظة. | نجعل السكن متاحاً للجميع.</p>
-    </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
-<script>
-    let map;
-    let markers = [];
-    
-    // Initialize map
-    function initMap() {
-        // Create map centered on Riyadh
-        map = L.map('map').setView([24.7136, 46.6753], 11);
-        
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        
-        // Add property markers
-        addPropertyMarkers();
-    }
-    
-    function addPropertyMarkers() {
-        const properties = document.querySelectorAll('.property-card');
-        
-        properties.forEach(property => {
-            const lat = parseFloat(property.dataset.lat);
-            const lng = parseFloat(property.dataset.lng);
-            const title = property.querySelector('h3').textContent;
-            const price = property.querySelector('.property-price').textContent;
+    <section class="locations" id="locations">
+        <div class="container">
+            <h2>🗺 خريطة تفاعلية للعقارات المتاحة</h2>
             
-            const marker = L.marker([lat, lng]).addTo(map);
-            marker.bindPopup(`
-                <div style="text-align: right; font-family: Cairo, Arial, sans-serif;">
-                    <h4 style="margin: 0 0 5px 0; color: #1f2937;">${title}</h4>
-                    <p style="margin: 0; color: #6366f1; font-weight: bold;">${price}</p>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            
+            <div class="location-list">
+                <div class="location-item" onclick="focusOnLocation(24.7136, 46.6753, 'حي الملز')">
+                    <h3>📍 حي الملز، الرياض</h3>
+                    <p>منطقة سكنية هادئة • قريب من المدارس والمستشفيات</p>
                 </div>
-            `);
+                <div class="location-item" onclick="focusOnLocation(24.7745, 46.6157, 'حي النرجس')">
+                    <h3>📍 حي النرجس، الرياض</h3>
+                    <p>حي راقي • مناسب للعائلات • مرافق متكاملة</p>
+                </div>
+                <div class="location-item" onclick="focusOnLocation(24.6877, 46.7219, 'حي العليا')">
+                    <h3>📍 حي العليا، الرياض</h3>
+                    <p>منطقة تجارية • قريب من المكاتب • مواصلات ممتازة</p>
+                </div>
+                <div class="location-item" onclick="focusOnLocation(24.6889, 46.6167, 'الحي الدبلوماسي')">
+                    <h3>📍 الحي الدبلوماسي، الرياض</h3>
+                    <p>حي فاخر • أمان عالي • مناسب للدبلوماسيين</p>
+                </div>
+                <div class="location-item" onclick="focusOnLocation(24.7543, 46.6291, 'حي الصحافة')">
+                    <h3>📍 حي الصحافة، الرياض</h3>
+                    <p>منطقة حديثة • مراكز تسوق • مطاعم متنوعة</p>
+                </div>
+                <div class="location-item" onclick="focusOnLocation(24.7231, 46.6344, 'حي الورود')">
+                    <h3>📍 حي الورود، الرياض</h3>
+                    <p>حي جميل • مساحات خضراء • مناسب للأطفال</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps" id="steps">
+        <div class="container">
+            <h2>ابدأ مع معين في ثلاث خطوات بسيطة وانتقل إلى منزلك الجديد اليوم</h2>
             
-            markers.push(marker);
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>قدم طلبك</h3>
+                    <p>أكمل طلبنا السريع في ٣ دقائق. بدون أوراق، بدون فحص ائتماني، فقط أسئلة بسيطة حول دخلك واحتياجاتك الإيجارية.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>احصل على الموافقة</h3>
+                    <p>تلق الموافقة الفورية وجدول الدفع الخاص بك. سنعمل معك لإنشاء خطة تناسب ميزانيتك تماماً.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>انتقل إلى منزلك</h3>
+                    <p>ندفع لمالك العقار، وتدفع لنا بأقساط مرنة. انتقل إلى منزل أحلامك دون الضغط المالي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <p>انضم إلى آلاف المستأجرين الذين حققوا أحلامهم السكنية مع معين</p>
+                <p>&copy; 2025 معين. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+
+    <script>
+        let map;
+        let markers = [];
+
+        // Initialize map
+        function initMap() {
+            map = L.map('map').setView([24.7136, 46.6753], 11);
             
-            // Add click event to property card to center map
-            property.addEventListener('click', () => {
-                map.setView([lat, lng], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Add location markers
+            const locations = [
+                {lat: 24.7136, lng: 46.6753, name: 'حي الملز', desc: 'منطقة سكنية هادئة', properties: 15},
+                {lat: 24.7745, lng: 46.6157, name: 'حي النرجس', desc: 'حي راقي مناسب للعائلات', properties: 23},
+                {lat: 24.6877, lng: 46.7219, name: 'حي العليا', desc: 'منطقة تجارية حيوية', properties: 31},
+                {lat: 24.6889, lng: 46.6167, name: 'الحي الدبلوماسي', desc: 'حي فاخر وآمن', properties: 8},
+                {lat: 24.7543, lng: 46.6291, name: 'حي الصحافة', desc: 'منطقة حديثة ومتطورة', properties: 19},
+                {lat: 24.7231, lng: 46.6344, name: 'حي الورود', desc: 'حي جميل ومناسب للأطفال', properties: 12}
+            ];
+
+            locations.forEach(location => {
+                const marker = L.marker([location.lat, location.lng])
+                    .addTo(map)
+                    .bindPopup(`
+                        <div style="text-align: center; font-family: Arial;">
+                            <h3>${location.name}</h3>
+                            <p>${location.desc}</p>
+                            <p><strong>${location.properties} عقار متاح</strong></p>
+                            <button onclick="searchInArea('${location.name}')" style="background: #0a3d62; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">ابحث هنا</button>
+                        </div>
+                    `);
+                markers.push(marker);
+            });
+        }
+
+        // Focus on specific location
+        function focusOnLocation(lat, lng, name) {
+            map.setView([lat, lng], 14);
+            const marker = markers.find(m => m.getPopup().getContent().includes(name));
+            if (marker) {
                 marker.openPopup();
+            }
+        }
+
+        // Search in specific area
+        function searchInArea(area) {
+            alert(سيتم البحث عن العقارات في ${area});
+        }
+
+        // AI Search functionality
+        document.getElementById('aiSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const searchData = {};
+            
+            for (let [key, value] of formData.entries()) {
+                searchData[key] = value;
+            }
+
+            // Simulate AI processing
+            document.getElementById('aiResults').classList.add('show');
+            
+            // Generate mock results based on form data
+            const results = generateAIResults(searchData);
+            displayResults(results);
+        });
+
+        function generateAIResults(data) {
+            const mockResults = [
+                {
+                    title: 'شقة عائلية في حي النرجس',
+                    details: 3 غرف نوم • 2 حمام • مساحة 150 متر • ${data.budget ? 'تناسب ميزانيتك' : 'سعر مناسب'},
+                    price: '2800 ريال/شهر',
+                    distance: data['work-location'] ? 'على بعد 15 دقيقة من مكان عملك' : 'موقع متميز'
+                },
+                {
+                    title: 'فيلا فاخرة في حي الملز',
+                    details: 4 غرف نوم • 3 حمام • حديقة • ${data['children-count'] > 0 ? 'مناسبة للأطفال' : 'مساحات واسعة'},
+                    price: '4200 ريال/شهر',
+                    distance: 'قريب من المدارس والمستشفيات'
+                },
+                {
+                    title: 'دوبلكس عصري في حي العليا',
+                    details: 2 غرف نوم • 2 حمام • مفروش جزئياً • ${data['family-members'] <= 3 ? 'مناسب لحجم أسرتك' : 'مساحة كافية'},
+                    price: '3500 ريال/شهر',
+                    distance: data['work-location'] ? 'موقع ممتاز للوصول لمكان العمل' : 'منطقة حيوية'
+                }
+            ];
+
+            return mockResults;
+        }
+
+        function displayResults(results) {
+            const container = document.getElementById('resultsContainer');
+            container.innerHTML = '';
+
+            results.forEach((result, index) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'result-item';
+                resultDiv.innerHTML = `
+                    <div class="result-title">${result.title}</div>
+                    <div class="result-details">${result.details}</div>
+                    <div class="result-details"><strong>السعر:</strong> ${result.price}</div>
+                    <div class="result-details"><strong>الموقع:</strong> ${result.distance}</div>
+                    <button onclick="contactForProperty('${result.title}')" style="background: #0a3d62; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 10px;">تواصل للاستفسار</button>
+                `;
+                container.appendChild(resultDiv);
+            });
+        }
+
+        function contactForProperty(propertyName) {
+            alert(سيتم التواصل معك قريباً بخصوص ${propertyName});
+        }
+
+        // Initialize map when page loads
+        window.addEventListener('load', function() {
+            setTimeout(initMap, 100);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-    }
-    
-    function searchProperties() {
-        // In a real application, this would make an API call to search properties
-        // For demo purposes, we'll just show an alert
-        const location = document.getElementById('location').value;
-        const propertyType = document.getElementById('property-type').value;
-        const bedrooms = document.getElementById('bedrooms').value;
-        const priceRange = document.getElementById('price-range').value;
-        
-        // Simulate search
-        setTimeout(() => {
-            alert(`تم البحث عن العقارات في: ${location || 'جميع المناطق'}\nنوع العقار: ${propertyType || 'جميع الأنواع'}\nعدد الغرف: ${bedrooms || 'أي عدد'}\nالمدى السعري: ${priceRange || 'أي سعر'}`);
-        }, 500);
-    }
-    
-    function rentProperty(button) {
-        const propertyCard = button.closest('.property-card');
-        const propertyTitle = propertyCard.querySelector('h3').textContent;
-        const propertyPrice = propertyCard.querySelector('.property-price').textContent;
-        
-        // In a real application, this would start the rental process
-        alert(`سيتم توجيهك لاستئجار: ${propertyTitle}\nالسعر: ${propertyPrice}\nباستخدام خدمة RNPL`);
-    }
 
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
             }
         });
-    });
 
-    // Simple signup form handler
-    function showSignupForm() {
-        alert('شكراً لاهتمامك! في التطبيق الحقيقي، سيتم فتح نموذج التسجيل أو إعادة التوجيه إلى صفحة الطلب.');
-    }
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    // Add loading animation to CTA buttons
-    document.querySelectorAll('.primary-btn, .secondary-btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-            if (this.getAttribute('href') === '#' || this.getAttribute('href') === '#signup') {
-                e.preventDefault();
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                    showSignupForm();
-                }, 150);
-            }
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and step cards
+        document.querySelectorAll('.feature-card, .step-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
-    });
-
-    // Feature cards intersection observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe feature cards
-    document.querySelectorAll('.feature-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-    
-    // Initialize map when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        // Delay map initialization to ensure the div is rendered
-        setTimeout(initMap, 100);
-    });
-</script>
-
-
+    </script>
 </body>
 </html>
